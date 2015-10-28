@@ -26,7 +26,7 @@ module.exports = {
       {
         test: /\.js$/,
         loaders: ['babel'],
-        include: path.join(ROOT_PATH, 'src')
+        include: [path.join(ROOT_PATH, 'src'), path.join(ROOT_PATH, 'lib')]
       },
       {
         test: /\.css$/,
@@ -46,7 +46,8 @@ module.exports = {
         variables: function () {
           return require(path.resolve(ROOT_PATH, 'lib/cssVariables.js'));
         }
-      })
+      }),
+      require('cssnext')()
     ];
   }
 };

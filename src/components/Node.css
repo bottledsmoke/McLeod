@@ -1,3 +1,8 @@
+:root {
+  --nodeFontSize: 18px;
+  --nodeLetterSpacing: calc(var(--nodeFontSize) / 7.5 );
+}
+
 .vertical-center {
   position: relative;
   top: 50%;
@@ -9,7 +14,7 @@
 .node-inner-circle {
   box-sizing: border-box;
 
-  border: 1px solid white;
+  border: 2px solid $flatUIWhite;
   border-radius: 100%;
 }
 
@@ -28,8 +33,13 @@
 }
 
 .node-inner-circle-text {
+  font-size: var(--nodeFontSize);
+  font-weight: 100;
+
   width: 200px;
   margin: 0 25px;
 
   text-align: center;
+  letter-spacing: var(--nodeLetterSpacing);
+  text-transform: uppercase;
 }

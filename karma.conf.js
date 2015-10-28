@@ -1,5 +1,7 @@
 var path = require('path');
 
+var ROOT_PATH = __dirname;
+
 module.exports = function (config) {
   config.set({
     browsers: ['Chrome'],
@@ -24,12 +26,15 @@ module.exports = function (config) {
           {
             test: /\.jsx?$/,
             loader: 'babel',
-            include: path.resolve(__dirname, 'src')
+            include: [
+              path.resolve(ROOT_PATH, 'src'),
+              path.resolve(ROOT_PATH, 'lib')
+            ]
           },
           {
             test: /\.css$/,
             loaders: ['style', 'css', 'postcss'],
-            include: path.resolve(__dirname, 'src')
+            include: path.resolve(ROOT_PATH, 'src')
           }
         ]
       },
@@ -39,7 +44,7 @@ module.exports = function (config) {
           require('lost'),
           require('postcss-simple-vars')({
             variables: function () {
-              return require(path.resolve(__dirname, 'lib/cssVariables.js'));
+              return require(path.resolve(ROOT_PATH, 'lib/cssVariables.js'));
             }
           })
         ];
