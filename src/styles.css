@@ -22,13 +22,15 @@ body {
 h1 {
   font-size: 36px;
 
+  color: $flatui-white;
+  border-bottom: 1px solid $flatui-white;
+}
+
+.nodes-container {
   position: relative;
   top: 50%;
 
   margin-top: -5px;
 
   transform: translateY(-50%);
-
-  color: $flatui-white;
-  border-bottom: 1px solid $flatui-white;
 }

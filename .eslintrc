@@ -13,9 +13,7 @@
   "React": false,
   "ReactDOM": false,
   "Relay": false,
-  "window": true,
-  "describe": true,
-  "it": true
+  "window": true
 },
 
 "ecmaFeatures": {

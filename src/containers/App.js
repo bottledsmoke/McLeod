@@ -1,26 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Hello from '../components/hello/hello';
+import Nodes from '../components/Nodes';
 
 class App extends Component {
   render() {
+    console.log('app', this.props)
     const { dispatch } = this.props;
     return (
-      <Hello text={this.props.message} />
+      <Nodes nodes={this.props.nodes} />
     );
   }
 }
 
 function stateToProps(state) {
   return {
-    message: state.message
+    nodes: state.nodes
   };
 }
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired
+  nodes: PropTypes.array.isRequired
 };
 
 export default connect(stateToProps)(App);

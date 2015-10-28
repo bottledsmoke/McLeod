@@ -1,18 +1,8 @@
 import { combineReducers } from 'redux';
-
-const initialState = {
-  text: 'Bonjour World'
-};
-
-function message(state = initialState.text, action) {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
+import nodes from './nodes-reducers';
 
 const rootReducer = combineReducers({
-  message
+  nodes
 });
 
 export default rootReducer;
