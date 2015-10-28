@@ -8,10 +8,11 @@ body {
 
   height: 100%;
   min-height: 100%;
+  margin-left: 175px;
 
+  color: $flatui-white;
   background-color: $flatui-green-dark;
-
-  lost-center: 980px;
+  /*lost-center: 980px;*/
 }
 
 .site-container,
@@ -19,16 +20,10 @@ body {
   height: 100%;
 }
 
-h1 {
-  font-size: 36px;
-
-  color: $flatui-white;
-  border-bottom: 1px solid $flatui-white;
-}
-
 .nodes-container {
   position: relative;
   top: 50%;
+  overflow: auto;
 
   margin-top: -5px;
 

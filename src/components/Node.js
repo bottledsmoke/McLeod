@@ -1,8 +1,21 @@
 import React, { Component, PropTypes } from 'react';
+import './Node.css';
 
 export default class Node extends Component {
   render() {
-    return <h1>{this.props.text}</h1>;
+    return (
+      <div className={"node-outer-circle"}
+           /* TODO change bg-color to reflect the type of bubble */
+           style={{ backgroundColor: 'transparent', }}>
+        <div className={"node-inner-circle vertical-center"}
+             /* TODO change bg-color to reflect the type of bubble */
+             style={{ backgroundColor: 'transparent', }}>
+          <h1 className={"node-inner-circle-text vertical-center"}>
+            {this.props.text}
+          </h1>
+        </div>
+      </div>
+    );
   }
 }
 

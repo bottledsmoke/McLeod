@@ -1,0 +1,35 @@
+.vertical-center {
+  position: relative;
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.node-outer-circle,
+.node-inner-circle {
+  box-sizing: border-box;
+
+  border: 1px solid white;
+  border-radius: 100%;
+}
+
+.node-outer-circle {
+  float: left;
+
+  width: 300px;
+  height: 300px;
+  margin: 0 50px 0 0;
+}
+
+.node-inner-circle {
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.node-inner-circle-text {
+  width: 200px;
+  margin: 0 25px;
+
+  text-align: center;
+}
