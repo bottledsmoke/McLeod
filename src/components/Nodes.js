@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react';
+import Node from './Node';
 
 export default class Nodes extends Component {
   render() {
     console.log('nodes ', this.props);
     return (
-      <div className='nodes-container'>
+      <div className="nodes-container">
         {this.props.nodes.map((node) =>
-          <h1>{node.text}</h1>
+          <Node text={node.text} />
         )}
       </div>
     );

@@ -5,8 +5,7 @@ import Nodes from '../components/Nodes';
 
 class App extends Component {
   render() {
-    console.log('app', this.props)
-    const { dispatch } = this.props;
+    // const { dispatch } = this.props;
     return (
       <Nodes nodes={this.props.nodes} />
     );
