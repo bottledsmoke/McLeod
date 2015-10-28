@@ -1,6 +1,7 @@
 :root {
   --nodeFontSize: 18px;
-  --nodeLetterSpacing: calc(var(--nodeFontSize) / 7.5 );
+  --nodeLetterSpacing: calc(var(--nodeFontSize) / 5 );
+  --nodeFontWeight: 300;
 }
 
 .vertical-center {
@@ -34,11 +35,13 @@
 
 .node-inner-circle-text {
   font-size: var(--nodeFontSize);
-  font-weight: 100;
+  font-weight: var(--nodeFontWeight);
 
   width: 200px;
-  margin: 0 25px;
+  margin: 0 15px;
+  padding: 10px; /* for better target acquisition */
 
+  cursor: pointer;
   text-align: center;
   letter-spacing: var(--nodeLetterSpacing);
   text-transform: uppercase;
