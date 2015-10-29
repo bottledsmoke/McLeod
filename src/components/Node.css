@@ -2,6 +2,7 @@
   --nodeFontSize: 18px;
   --nodeLetterSpacing: calc(var(--nodeFontSize) / 5 );
   --nodeFontWeight: 300;
+  --circleDiameter: 300px;
 }
 
 .vertical-center {
@@ -22,14 +23,18 @@
 .node-outer-circle {
   float: left;
 
-  width: 300px;
-  height: 300px;
+  /*width: 300px;
+  height: 300px;*/
+  width:  var(--circleDiameter);
+  height: var(--circleDiameter);
   margin: 0 50px 0 0;
 }
 
 .node-inner-circle {
-  width: 250px;
-  height: 250px;
+  /*width: 250px;
+  height: 250px;*/
+  width:  calc(var(--circleDiameter) - 50px);
+  height: calc(var(--circleDiameter) - 50px);
   margin: 0 auto;
 }
 
@@ -37,7 +42,8 @@
   font-size: var(--nodeFontSize);
   font-weight: var(--nodeFontWeight);
 
-  width: 200px;
+  /*width: 200px;*/
+  width: calc(var(--circleDiameter) - 100px);
   margin: 0 15px;
   padding: 10px; /* for better target acquisition */
 

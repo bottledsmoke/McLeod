@@ -1,26 +1,34 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import {setEditingIndex} from '../actions/nodes-actions';
 
 import Nodes from '../components/Nodes';
 
 class App extends Component {
   render() {
-    // const { dispatch } = this.props;
+    const { dispatch } = this.props;
     return (
-      <Nodes nodes={this.props.nodes} />
+      <Nodes
+             dispatchSetEditingIndex = {(id) =>
+               dispatch(setEditingIndex(id))
+             }
+             editingIndex={this.props.editingIndex}
+             nodes={this.props.nodes} />
     );
   }
 }
 
 function stateToProps(state) {
   return {
-    nodes: state.nodes
+    nodes: state.nodes,
+    editingIndex: state.editingIndex,
   };
 }
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  nodes: PropTypes.array.isRequired
+  editingIndex: PropTypes.string.isRequired,
+  nodes: PropTypes.array.isRequired,
 };
 
 export default connect(stateToProps)(App);

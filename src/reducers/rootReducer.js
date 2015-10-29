@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import nodes from './nodes-reducers';
+import { nodes, setEditingIndex } from './nodes-reducers';
 
 const rootReducer = combineReducers({
-  nodes
+  nodes,
+  setEditingIndex,
 });
 
 export default rootReducer;

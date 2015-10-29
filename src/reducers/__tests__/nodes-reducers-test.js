@@ -1,6 +1,6 @@
 /* global describe, it, beforeEach */
 import expect from 'expect';
-import nodes from '../nodes-reducers';
+import { nodes } from '../nodes-reducers';
 import * as constants from '../../constants/nodes-constants';
 import initialState from '../../../lib/initialState';
 
