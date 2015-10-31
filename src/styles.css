@@ -12,26 +12,26 @@ body {
 
   height: 100%;
   min-height: 100%;
-  margin-left: 175px;
 
   color: $flatUIWhite;
   background-color: $flatUIGreenDark;
-  /*lost-center: 980px;*/
 }
+
 
 .site-container,
 .site-container > div {
   height: 100%;
-  overflow-x: scroll;
+  padding: 25px
 }
 
 .nodes-container {
   position: relative;
-  top: 50%;
-
-  overflow: auto;
+  top: 0px;
+  /* TODO If elements are no longer floated, remove this */
+  /* Fix float height*/
+  overflow: hidden;
 
   margin-top: -5px;
 
-  transform: translateY(-50%);
+  /*transform: translateY(-50%);*/
 }

@@ -1,7 +1,8 @@
 :root {
-  --nodeFontSize: 18px;
+  --nodeFontSize: 1em;
   --nodeLetterSpacing: calc(var(--nodeFontSize) / 5 );
   --nodeFontWeight: 300;
+  --nodeTextVerticalCenteringFactor: calc(-1/16em);
   --circleDiameter: 300px;
 }
 
@@ -23,16 +24,13 @@
 .node-outer-circle {
   float: left;
 
-  /*width: 300px;
-  height: 300px;*/
   width:  var(--circleDiameter);
   height: var(--circleDiameter);
-  margin: 0 50px 0 0;
+  /*margin: 25px;*/
+  margin: 0;
 }
 
 .node-inner-circle {
-  /*width: 250px;
-  height: 250px;*/
   width:  calc(var(--circleDiameter) - 50px);
   height: calc(var(--circleDiameter) - 50px);
   margin: 0 auto;
@@ -42,9 +40,9 @@
   font-size: var(--nodeFontSize);
   font-weight: var(--nodeFontWeight);
 
-  /*width: 200px;*/
   width: calc(var(--circleDiameter) - 100px);
   margin: 0 15px;
+  margin-top: var(--nodeTextVerticalCenteringFactor);
   padding: 10px; /* for better target acquisition */
 
   cursor: pointer;

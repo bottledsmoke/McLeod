@@ -15,6 +15,14 @@
 - There must always be an empty node at the end of each row, and an empty node above and below each node of the longest row.
 - If there is only one row, it is the longest row, so it will always have empty nodes above and below each of its nodes as well as an empty node at the end of the row.
 
+      Node: {
+        id: '18b580cf-f908-4255-8924-f28201f78287',
+        text: The quick brown fox,
+        links: {
+          
+        }
+      }
+
       // Option 1: Array Position Determines Layout
       State: {
         Nodes: [       // All Nodes
@@ -23,6 +31,7 @@
             {          // Row 1, Node 1
               id:   '18b580cf-f908-4255-8924-f28201f78287',
               text: 'The quick brown fox',
+              connections:
             },
             null,      // Empty Node
             null,      // Empty Node
@@ -51,8 +60,16 @@
       // Option 2: Store Nodes in Object, Store Layout in Array.
       State: {
         Layout: [
-
-        ]
+          [
+            null, '14887133-7559-4a3b-80cd-f3fa3696dc56', null
+          ],
+          [
+            '18b580cf-f908-4255-8924-f28201f78287', null, null
+          ],
+          [
+            null, '367092bf-e2ba-4154-be05-e2979abe6426', null
+          ]
+        ],
         Nodes: {
           '18b580cf-f908-4255-8924-f28201f78287': {
             text: 'The quick brown fox',
