@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Node from './Node';
-import Grid from './Grid';
 
 export default class Nodes extends Component {
   render() {
@@ -9,38 +8,17 @@ export default class Nodes extends Component {
       /* TODO Put drop area grid above each node where
               the user can add nodes above existing ones */
       <div className="nodes-container">
-        <Grid unitSize={30}/>
           {this.props.nodes.map((node, index) =>
             <Node handleClick={
                     (id) => this.props.dispatchSetEditingIndex(id)
                   }
                   index={index}
                   key={`node:${node.id}`}
+                  size={300}
                   text={node.text}
                   userIsEditing={node.id === this.props.editingIndex}
             />
           )}
-          {this.props.nodes.map((node, index) =>
-            <Node handleClick={
-                    (id) => this.props.dispatchSetEditingIndex(id)
-                  }
-                  index={index}
-                  key={`node:${node.id}`}
-                  text={node.text}
-                  userIsEditing={node.id === this.props.editingIndex}
-            />
-          )}
-          {this.props.nodes.map((node, index) =>
-            <Node handleClick={
-                    (id) => this.props.dispatchSetEditingIndex(id)
-                  }
-                  index={index}
-                  key={`node:${node.id}`}
-                  text={node.text}
-                  userIsEditing={node.id === this.props.editingIndex}
-            />
-          )}
-
       </div>
       /* TODO Put drop area grid below each node where
               the user can add nodes below existing ones */
@@ -56,3 +34,6 @@ Nodes.propTypes = {
     text: PropTypes.string.isRequired,
   }).isRequired).isRequired,
 };
+
+
+/* TODO Make */
