@@ -4,6 +4,7 @@ import * as constants from '../constants/nodes-constants';
 import initialState from '../../lib/initialState.js';
 
 export function nodes(state = initialState, action) {
+  console.log(initialState);
   const { payload } = action;
   switch (action.type) {
     case constants.ADD_NODE:
