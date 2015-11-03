@@ -20,8 +20,10 @@ class App extends Component {
 
 function stateToProps(state) {
   return {
-    nodes: state.nodes,
+    initialNode:  state.initialNode,
     editingIndex: state.editingIndex,
+    columns: state.columns,
+    nodes:   state.nodes,
   };
 }
 
