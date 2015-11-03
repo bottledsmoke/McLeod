@@ -3,8 +3,7 @@ import * as constants from '../constants/nodes';
 
 import initialState from '../../lib/initialState.js';
 
-export function nodes(state = initialState, action) {
-  console.log(initialState);
+export function nodes(state = initialState.nodes, action) {
   const { payload } = action;
   switch (action.type) {
     case constants.ADD_NODE:
@@ -36,9 +35,18 @@ export function nodes(state = initialState, action) {
   }
 }
 
-export function editingIndex(state = null, action) {
+export function editingIndex(state = initialState.editingIndex, action) {
   switch (action.type) {
     case constants.SET_EDITING_INDEX:
+      return action.payload.id;
+    default:
+      return state;
+  }
+}
+
+export function initialNode( state = initialState.initialNode, action ) {
+  switch (action.type) {
+    case constants.SET_INITIAL_NODE:
       return action.payload.id;
     default:
       return state;

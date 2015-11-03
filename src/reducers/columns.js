@@ -1,7 +1,7 @@
 import * as constants from '../constants/columns';
 import initialState from '../../lib/initialState';
 
-function columns(state = initialState, action) {
+function columns(state = initialState.columns, action) {
   const { payload } = action;
   switch (action.type) {
     case constants.ADD_NODE:
