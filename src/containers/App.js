@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import {setEditingIndex} from '../actions/nodes-actions';
+import { setEditingIndex } from '../actions/nodes';
 
 import Nodes from '../components/Nodes';
 

@@ -1,5 +1,5 @@
 import uuid from 'node-uuid';
-import * as constants from '../constants/nodes-constants';
+import * as constants from '../constants/nodes';
 
 export function addNode(text) {
   return {

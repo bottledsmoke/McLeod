@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { nodes, setEditingIndex } from './nodes-reducers';
+import { nodes, setEditingIndex } from './nodes';
 import columns from './columns';
 
 const rootReducer = combineReducers({
-  // nodes,
-  // setEditingIndex,
+  nodes,
+  setEditingIndex,
   columns
 });
 

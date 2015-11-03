@@ -1,5 +1,5 @@
 import { findIndex } from 'lodash';
-import * as constants from '../constants/nodes-constants';
+import * as constants from '../constants/nodes';
 
 import initialState from '../../lib/initialState.js';
 
