@@ -14,11 +14,13 @@ export default class Grid extends Component {
         major: '#3f3f3f',
         minor: '#f3f3f3',
       },
+      showGrid: this.props.on && !this.props.off ? 'block' : 'none',
     };
 
     return (
         <div className={'grid-major-unit'}
              style={{
+               display: config.showGrid,
                position: 'absolute',
                top:  '0',
                left: '0',
@@ -36,7 +38,7 @@ export default class Grid extends Component {
                  boxSizing: 'border-box',
                }}>
           </div>
-          {[...Array(divisions * divisions)].map((val) =>
+          {[...Array(divisions * divisions)].map(() =>
             <div className={'grid-minor-unit'}
                  style={{
                    height: String('100' / divisions) + '%',
@@ -50,33 +52,13 @@ export default class Grid extends Component {
             </div>
           )}
         </div>
-      // <div className={'grid-container'}
-      //      style={{position: 'relative'}}>
-      //   {[...Array(config.gridSize)].map((i, index) =>
-      //     <div className={'grid-row ' + index}
-      //          style={{
-      //            position: 'absolute',
-      //            top: String(config.minorUnitSize * index) + 'px',
-      //            zIndex: -9999,
-      //          }}>
-      //       {[...Array(config.gridSize)].map((j, innerIndex) =>
-      //       <div style={{
-      //         position: 'absolute',
-      //         width: config.minorUnitSize + 'px',
-      //         height: config.minorUnitSize + 'px',
-      //         boxSizing: 'border-box',
-      //         border: config.lineWeight + 'px solid blue',
-      //         left: config.minorUnitSize * innerIndex,
-      //       }}></div>
-      //       )}
-      //     </div>
-      //   )}
-      // </div>
     );
   }
 }
 
 Grid.propTypes = {
   divisions: PropTypes.number.isRequired,
+  off: PropTypes.bool,
+  on: PropTypes.bool,
   unitSize: PropTypes.number.isRequred,
 };

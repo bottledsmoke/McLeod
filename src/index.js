@@ -19,7 +19,7 @@ ReactDOM.render(
   <div className='app-root'>
     <Provider store={store}>
       <Router history={history}>
-        {/* <Route component={App} path="/" /> */}
+        <Route component={App} path="/" />
       </Router>
     </Provider>
     <DebugPanel bottom right top>

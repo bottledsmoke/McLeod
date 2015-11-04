@@ -1,19 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { setEditingIndex } from '../actions/nodes';
+// import { setEditingIndex } from '../actions/nodes';
 
-import Nodes from '../components/Nodes';
+// import Nodes from '../components/Nodes';
+import Columns from '../components/Columns';
 
 class App extends Component {
   render() {
-    const { dispatch } = this.props;
+    const { dispatch, columns } = this.props;
     return (
-      <Nodes
-             dispatchSetEditingIndex = {(id) =>
-               dispatch(setEditingIndex(id))
-             }
-             editingIndex={this.props.editingIndex}
-             nodes={this.props.nodes} />
+      <Columns columns={columns} />
+      // <Nodes
+      //        dispatchSetEditingIndex = {(id) =>
+      //          dispatch(setEditingIndex(id))
+      //        }
+      //        editingIndex={this.props.editingIndex}
+      //        nodes={this.props.nodes} />
     );
   }
 }
@@ -23,7 +25,6 @@ function stateToProps(state) {
     initialNode:  state.initialNode,
     editingIndex: state.editingIndex,
     columns: state.columns,
-    nodes:   state.nodes,
   };
 }
 

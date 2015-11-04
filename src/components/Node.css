@@ -3,7 +3,7 @@
   --nodeLetterSpacing: calc(var(--nodeFontSize) / 5 );
   --nodeFontWeight: 300;
   --nodeTextVerticalCenteringFactor: calc(-1/16em);
-  --circleDiameter: 300px;
+  --circleDiameter: 200px;
 }
 
 .vertical-center {

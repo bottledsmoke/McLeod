@@ -32,12 +32,12 @@ describe('Columns Actions: addNodeToColumn(args)', () => {
     const errColumn = [ 'id-1', 'id-2', 'id-3', 'id-4', 'id-5', ];
     expect(() =>
       addNodeToColumn( errColumn, nextColumn, columnIndex, nodeIndex, text)
-    ).toThrow('Cannot add node. There\'s a node is blocking the ' +
-              'paths of your new node\'s leaves');
+    ).toThrow('There\'s a node is blocking the paths ' +
+              'of your new node\'s leaves.');
     expect(() =>
       addNodeToColumn( sourceColumn, errColumn, columnIndex, nodeIndex, text)
-    ).toThrow('Cannot add node. There\'s a node is blocking the ' +
-              'paths of your new node\'s leaves');
+    ).toThrow('There\'s a node is blocking the paths ' +
+              'of your new node\'s leaves.');
   });
 
   it('won\'t add nodes when columns are too short or long', () => {
