@@ -6,7 +6,7 @@ import Grid from './Grid';
 
 export default class Node extends Component {
   render() {
-    const { text, size } = this.props;
+    const { text, size, index } = this.props;
     if (text) {
       return (
         <div className={"node-container"}
@@ -59,6 +59,7 @@ export default class Node extends Component {
 }
 
 Node.propTypes = {
+  index: PropTypes.number.isRequired,
   size: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
 };

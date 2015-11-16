@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import Node from '../components/Node';
 
 class Column extends Component {
@@ -12,9 +11,14 @@ class Column extends Component {
           if (nodeId) {
             return (
               <Node
+                handleClick={() =>
+                  this.props.abba(
+                    index, this.props.columnIndex, this.props.column,
+                  )}
                 index={index}
                 size={200}
                 text={nodes[nodeId].text}
+
               />);
           } else {
             return <div className="spacer" style={{height: '100px'}}></div>;
@@ -25,6 +29,8 @@ class Column extends Component {
   }
 }
 
+import { connect } from 'react-redux';
+
 function stateToProps(state) {
   return {
     nodes: state.nodes,
@@ -33,6 +39,7 @@ function stateToProps(state) {
 
 Column.propTypes = {
   column: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  columnIndex: PropTypes.number.isRequired,
   nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
