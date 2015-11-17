@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
-
 import { VelocityComponent } from 'velocity-react';
-
 
 var PotentialNode = React.createClass({
   propTypes: {
@@ -60,6 +58,9 @@ var PotentialNode = React.createClass({
             <div className={"node-inner-circle vertical-center"}
                  style={{ backgroundColor: 'transparent', }}>
               {this.props.isBeingEdited ?
+              // TODO align input correctly. Right now, it sometimes aligns
+              //      and sometimes does not. It must have to do with the
+              //      changing size of its container.
                 <input
                   autoFocus
                   className="vertical-center node-inner-circle-input"
