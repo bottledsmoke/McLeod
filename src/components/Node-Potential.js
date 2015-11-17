@@ -5,6 +5,7 @@ import { VelocityComponent } from 'velocity-react';
 
 var PotentialNode = React.createClass({
   propTypes: {
+    activateNode: PropTypes.func.isRequired,
     isBeingEdited: PropTypes.bool.isRequired,
     setEditingIndex: PropTypes.func.isRequired,
     size: PropTypes.number.isRequired,
@@ -12,18 +13,29 @@ var PotentialNode = React.createClass({
 
   animationProps: {
     active: {
-      duration: 300,
+      duration: 200,
       animation: {
-        scale: 1
+        scale: 1,
+        backgroundColorAlpha: '0',
       },
-      easing: 'easeInCubic',
+      easing: 'ease',
     },
     inactive: {
-      duration: 300,
+      duration: 200,
       animation: {
-        scale: 0.1
+        scale: 0.1,
+        backgroundColorAlpha: '1'
       },
-      easing: 'easeInCubic',
+      easing: 'ease',
+    }
+  },
+
+  handleSubmit: function (e) {
+    if (e.keyCode === 13) {
+      const node = this.refs.input;
+      const text = node.value;
+      this.props.activateNode(text);
+      node.value = '';
     }
   },
 
@@ -41,12 +53,28 @@ var PotentialNode = React.createClass({
            }}>
         <VelocityComponent {...animation}>
           <div className={"node-outer-circle"}
-               style={{ backgroundColor: 'transparent', }}>
+               onClick={() => this.props.setEditingIndex()}
+               style={{ backgroundColor: '#FFF',
+                        cursor: 'pointer',
+                        position: 'relative'}}>
             <div className={"node-inner-circle vertical-center"}
                  style={{ backgroundColor: 'transparent', }}>
-              <div className={'empty-node'}
-                  onClick={() => this.props.setEditingIndex()}>
-              </div>
+              {this.props.isBeingEdited ?
+                <input
+                  autoFocus
+                  className="vertical-center node-inner-circle-input"
+                  onBlur={() => this.props.setEditingIndex('')}
+                  onKeyUp={(e) => this.handleSubmit(e)}
+                  ref="input"
+                  style={{
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    borderBottom: '1px solid white',
+                    textAlign: 'center',
+                  }}
+                  type="text" /> :
+                <div className={'empty-node'}></div>
+              }
             </div>
           </div>
         </VelocityComponent>

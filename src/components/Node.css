@@ -36,7 +36,8 @@
   margin: 0 auto;
 }
 
-.node-inner-circle-text {
+.node-inner-circle-text,
+.node-inner-circle-input {
   font-size: var(--nodeFontSize);
   font-weight: var(--nodeFontWeight);
 
@@ -45,10 +46,17 @@
   margin-top: var(--nodeTextVerticalCenteringFactor);
   padding: 10px; /* for better target acquisition */
 
-  cursor: pointer;
   text-align: center;
   letter-spacing: var(--nodeLetterSpacing);
   text-transform: uppercase;
+}
+
+.node-inner-circle-text {
+  cursor: pointer;
+}
+
+.node-inner-circle-input:focus {
+  outline: none;
 }
 
 .empty-node {

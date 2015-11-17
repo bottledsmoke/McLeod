@@ -55,9 +55,16 @@ export function addNode( columnIndex, nodeIndex ) {
 */
 
 
-function activateNode(columnIndex, nodeIndex) {
+export function activateNode(text, columnIndex, nodeIndex) {
   // placeholder code below.
-  return columnIndex + nodeIndex;
+  return {
+    type: constants.ACTIVATE_NODE, 
+    payload: {
+      text,
+      columnIndex,
+      nodeIndex
+    }
+  };
 }
 
 function addNodeToColumn(columnIndex, nodeIndex) {
