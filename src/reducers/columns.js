@@ -4,29 +4,36 @@ import initialState from '../../lib/initialState';
 function columns(state = initialState.columns, action) {
   switch (action.type) {
     case constants.ADD_NODE:
-      const { payload } = action;
+
+      // if (!columns[columnIndex] || !columns[columnIndex][nodeIndex]) {
+      //   throw new Error('Node does not exist at this location');
+      // }
+
+      const { columnIndex, nodeIndex } = action.payload;
+
+      const sourceColumn = state[columnIndex];
+      const nextColumn = state[columnIndex + 1];
       return [
-        ...columns.slice(0, payload.columnNumber),
+        ...state.slice(0, columnIndex),
         [
-          ...columns[payload.columnNumber].slice(0, payload.startingIndex),
+          ...state[columnIndex].slice(0, nodeIndex),
 
-          ...payload.sourceColumn,
+          ...sourceColumn,
 
-          ...columns[payload.columnNumber].slice( payload.startingIndex +
-                                                  payload.sourceColumn.length),
+          ...state[columnIndex].slice( nodeIndex + sourceColumn.length),
         ],
         [
-          ...columns[payload.columnNumber + 1].slice(
-            0, payload.startingIndex + 1
+          ...state[columnIndex + 1].slice(
+            0, nodeIndex + 1
           ),
 
-          ...payload.nextColumn,
+          ...nextColumn,
 
-          ...columns[payload.columnNumber + 1].slice(
-            1 + payload.startingIndex + payload.nextColumn.length
+          ...state[columnIndex + 1].slice(
+            1 + nodeIndex + nextColumn.length
           )
         ],
-        ...columns.slice(payload.columnNumber + 2)
+        ...state.slice(columnIndex + 2)
       ];
     default:
       return state;

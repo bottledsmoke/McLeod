@@ -1,11 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import Node from '../components/Node';
+import { setEditingIndex } from '../actions/nodes';
 
 class Column extends Component {
   render() {
-    const { nodes } = this.props;
+    const { dispatch, editingIndex, nodes } = this.props;
     return (
-      <div className="columnContainer" style={{ float: 'left'}}>
+      <div
+        className="columnContainer"
+        style={{ float: 'left', marginRight: '50px'}}>
         {this.props.column.map((nodeId, index) => {
           // TODO Use Undefined nodeIds as spacers
           if (nodeId) {
@@ -13,15 +16,24 @@ class Column extends Component {
               <Node
                 handleClick={() =>
                   this.props.abba(
-                    index, this.props.columnIndex, this.props.column,
-                  )}
+                      this.props.columnIndex, index
+                )}
                 index={index}
+                isBeingEdited={editingIndex === nodeId}
+                key={`node-${nodeId}`}
+                setEditingIndex={() =>
+                  dispatch(setEditingIndex(nodeId))
+                }
                 size={200}
                 text={nodes[nodeId].text}
-
               />);
           } else {
-            return <div className="spacer" style={{height: '100px'}}></div>;
+            return (
+              <div className="spacer"
+                   key={`empty-node-${Math.floor(Math.random() * 100)}`}
+                   style={{height: '100px'}}>
+              </div>
+            );
           }
         })}
       </div>
@@ -33,14 +45,17 @@ import { connect } from 'react-redux';
 
 function stateToProps(state) {
   return {
+    editingIndex: state.editingIndex,
     nodes: state.nodes,
   };
 }
 
 Column.propTypes = {
-  column: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  column: PropTypes.array.isRequired,
   columnIndex: PropTypes.number.isRequired,
-  nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  dispatch: PropTypes.func.isRequired,
+  editingIndex: PropTypes.string.isRequired,
+  nodes: PropTypes.object.isRequired
 };
 
 export default connect(stateToProps)(Column);

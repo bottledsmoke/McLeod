@@ -50,3 +50,15 @@
   letter-spacing: var(--nodeLetterSpacing);
   text-transform: uppercase;
 }
+
+.empty-node {
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}

@@ -11,14 +11,14 @@ describe('Columns reducer', () => {
     expect(columns(state.columns, { type: null })).toEqual(state.columns);
   });
   it('adds a column using addNodeToColumn', () => {
+    console.log(initialState.columns);
     const columnIndex = 0;
-    const nodeIndex   = 1;
-    const text = 'LOREM IPSUM DOLOR SIN AVRET';
+    const nodeIndex   = 0;
     expect(
       columns(
         state,
         addNodeToColumn(
-          state.columns[0], state.columns[1], columnIndex, nodeIndex, text
+          columnIndex, nodeIndex
         )
       )
     ).toEqual(

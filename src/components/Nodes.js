@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import Node from './Node';
 
+// DEPRECIATED
+
 export default class Nodes extends Component {
   render() {
     console.log('nodes ', this.props);

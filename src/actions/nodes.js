@@ -11,6 +11,16 @@ export function addNode(text) {
   };
 }
 
+export function editNode(nodeId, text) {
+  return {
+    type: constants.EDIT_NODE,
+    payload: {
+      id: nodeId,
+      text: text,
+    }
+  };
+}
+
 export function removeNode(nodeId) {
   return {
     type: constants.REMOVE_NODE,
@@ -20,12 +30,11 @@ export function removeNode(nodeId) {
   };
 }
 
-export function editNodeText(nodeId, text) {
+export function setEditingIndex(nodeId) {
   return {
-    type: constants.EDIT_NODE_TEXT,
+    type: constants.SET_EDITING_INDEX,
     payload: {
-      id: nodeId,
-      text: text,
+      id: nodeId
     }
   };
 }

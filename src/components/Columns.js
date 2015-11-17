@@ -14,6 +14,7 @@ export default class Columns extends Component {
               )}
             column={column}
             columnIndex={index}
+            key={`column-${index}`}
           />
         )}
       </div>
@@ -23,8 +24,6 @@ export default class Columns extends Component {
 
 Columns.propTypes = {
   columns: PropTypes.arrayOf(
-    PropTypes.arrayOf(
-      PropTypes.string.isRequired
-    ).isRequired
+    PropTypes.array.isRequired
   ).isRequired,
 };

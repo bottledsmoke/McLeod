@@ -6,8 +6,8 @@ import Grid from './Grid';
 
 export default class Node extends Component {
   render() {
-    const { text, size, index } = this.props;
-    if (text) {
+    const { text, size, isBeingEdited } = this.props;
+    if (text || isBeingEdited) {
       return (
         <div className={"node-container"}
              style={{
@@ -23,7 +23,18 @@ export default class Node extends Component {
                  /* TODO change bg-color to reflect the type of bubble */
                  style={{ backgroundColor: 'transparent', }}>
               <h3 className={"node-inner-circle-text vertical-center"}>
-                {text}
+                {isBeingEdited ?
+                 <input type="text"
+                        autofocus="true"
+                        style={{
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          borderBottom: '1px solid white',
+                          textAlign: 'center',
+                          width: '100%',
+                        }}
+                  /> :
+                  text}
               </h3>
             </div>
           </div>
@@ -38,19 +49,8 @@ export default class Node extends Component {
                width: String(size) + 'px',
                height: String(size) + 'px',
              }}>
-           <div className="empty-node"
-                onClick={() => this.props.handleClick()}
-                style={{
-                  width: '20px',
-                  height: '20px',
-                  margin: '0 auto',
-                  position: 'relative',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  backgroundColor: 'white',
-                  borderRadius: '50%',
-                  cursor: 'pointer',
-                }}>
+           <div className={'empty-node'}
+                onClick={() => this.props.setEditingIndex()}>
           </div>
         </div>
       );
@@ -59,7 +59,8 @@ export default class Node extends Component {
 }
 
 Node.propTypes = {
-  index: PropTypes.number.isRequired,
+  isBeingEdited: PropTypes.bool.isRequired,
+  setEditingIndex: PropTypes.func.isRequired,
   size: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
 };

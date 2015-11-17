@@ -38,8 +38,9 @@ export default class Grid extends Component {
                  boxSizing: 'border-box',
                }}>
           </div>
-          {[...Array(divisions * divisions)].map(() =>
+          {[...Array(divisions * divisions)].map((v, i) =>
             <div className={'grid-minor-unit'}
+                 key={`gridLine-${i}`}
                  style={{
                    height: String('100' / divisions) + '%',
                    width:  String('100' / divisions) + '%',
@@ -60,5 +61,5 @@ Grid.propTypes = {
   divisions: PropTypes.number.isRequired,
   off: PropTypes.bool,
   on: PropTypes.bool,
-  unitSize: PropTypes.number.isRequred,
+  unitSize: PropTypes.number.isRequired,
 };

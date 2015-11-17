@@ -1,27 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addNodeToColumn } from '../actions/Columns';
-// import { setEditingIndex } from '../actions/nodes';
+import { addNode } from '../actions/Columns';
 
-// import Nodes from '../components/Nodes';
 import Columns from '../components/Columns';
 
 class App extends Component {
-  // prepareAddNode(columnIndex, nodeIndex) {
-  //   const { columns } = this.props;
-  //   const sourceColumn = columns[columnIndex];
-  //   const nextColumn = columns[columnIndex + 1];
-  // }
   render() {
     const { dispatch, columns } = this.props;
     return (
       <Columns
         columns={columns}
-        handleAddNode={(columnIndex, nodeIndex, sourceColumn, nextColumn) =>
-          dispatch(
-            addNodeToColumn(
-              sourceColumn, nextColumn, columnIndex, nodeIndex, )
-            )}
+        handleAddNode={(columnIndex, nodeIndex) =>
+          dispatch(addNode(columnIndex, nodeIndex))}
         />
     );
   }
@@ -29,16 +19,14 @@ class App extends Component {
 
 function stateToProps(state) {
   return {
-    initialNode:  state.initialNode,
     editingIndex: state.editingIndex,
     columns: state.columns,
   };
 }
 
 App.propTypes = {
+  columns: PropTypes.arrayOf(PropTypes.array.isRequired).isRequired,
   dispatch: PropTypes.func.isRequired,
-  editingIndex: PropTypes.string.isRequired,
-  nodes: PropTypes.array.isRequired,
 };
 
 export default connect(stateToProps)(App);
