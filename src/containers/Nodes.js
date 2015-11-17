@@ -1,6 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import Node from '../components/Node';
+import { VelocityComponent } from 'velocity-react';
 import { setEditingIndex } from '../actions/nodes';
+
+const animationProps = {
+  duration: 1000,
+  animation: {
+    scale: 1.5
+  },
+  easing: 'easeInExpo',
+  loop: true
+};
 
 class Column extends Component {
   render() {
@@ -13,20 +23,23 @@ class Column extends Component {
           // TODO Use Undefined nodeIds as spacers
           if (nodeId) {
             return (
-              <Node
-                handleClick={() =>
-                  this.props.abba(
-                      this.props.columnIndex, index
-                )}
-                index={index}
-                isBeingEdited={editingIndex === nodeId}
-                key={`node-${nodeId}`}
-                setEditingIndex={() =>
-                  dispatch(setEditingIndex(nodeId))
-                }
-                size={200}
-                text={nodes[nodeId].text}
-              />);
+              <VelocityComponent {...animationProps}>
+                <Node
+                  handleClick={() =>
+                    this.props.abba(
+                        this.props.columnIndex, index
+                  )}
+                  index={index}
+                  isBeingEdited={editingIndex === nodeId}
+                  key={`node-${nodeId}`}
+                  setEditingIndex={() =>
+                    dispatch(setEditingIndex(nodeId))
+                  }
+                  size={200}
+                  text={nodes[nodeId].text}
+                />
+              </VelocityComponent>
+            );
           } else {
             return (
               <div className="spacer"
