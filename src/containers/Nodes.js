@@ -1,58 +1,73 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Node from '../components/Node';
-import { VelocityComponent } from 'velocity-react';
+import PotentialNode from '../components/Node-Potential';
 import { setEditingIndex } from '../actions/nodes';
 
-const animationProps = {
-  duration: 1000,
-  animation: {
-    scale: 1.5
+const Column = React.createClass({
+  propTypes: {
+    column: PropTypes.array.isRequired,
+    columnIndex: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    dispatchClick: PropTypes.func.isRequired,
+    editingIndex: PropTypes.string.isRequired,
+    nodes: PropTypes.object.isRequired,
   },
-  easing: 'easeInExpo',
-  loop: true
-};
 
-class Column extends Component {
-  render() {
+  dispatchClick: function (nodeIndex) {
+    this.props.dispatchClick(this.props.columnIndex, nodeIndex);
+  },
+
+  render: function () {
     const { dispatch, editingIndex, nodes } = this.props;
+
+    const nodeList = this.props.column.map((nodeId, nodeIndex) => {
+      if (nodeId) {
+        if (nodes[nodeId].text) {
+          return (
+            <Node
+              handleClick={() => this.dispatchClick(nodeIndex)}
+              isBeingEdited={editingIndex === nodeId}
+              key={`node-${nodeId}`}
+              setEditingIndex={() =>
+                dispatch(setEditingIndex(nodeId))
+              }
+              size={200}
+              text={nodes[nodeId].text}
+            />
+          );
+        } else {
+          return (
+            <PotentialNode
+              handleClick={() => this.dispatchClick(nodeIndex)}
+              isBeingEdited={editingIndex === nodeId}
+              key={`node-${nodeId}`}
+              setEditingIndex={() =>
+                dispatch(setEditingIndex(nodeId))
+              }
+              size={200}
+            />
+          );
+        }
+      } else {
+        return (
+          <div className="spacer"
+               key={`empty-node-${Math.floor(Math.random() * 100)}`}
+               style={{height: '50px'}}>
+          </div>
+        );
+      }
+    });
+
     return (
-      <div
-        className="columnContainer"
-        style={{ float: 'left', marginRight: '50px'}}>
-        {this.props.column.map((nodeId, index) => {
-          // TODO Use Undefined nodeIds as spacers
-          if (nodeId) {
-            return (
-              <VelocityComponent {...animationProps}>
-                <Node
-                  handleClick={() =>
-                    this.props.abba(
-                        this.props.columnIndex, index
-                  )}
-                  index={index}
-                  isBeingEdited={editingIndex === nodeId}
-                  key={`node-${nodeId}`}
-                  setEditingIndex={() =>
-                    dispatch(setEditingIndex(nodeId))
-                  }
-                  size={200}
-                  text={nodes[nodeId].text}
-                />
-              </VelocityComponent>
-            );
-          } else {
-            return (
-              <div className="spacer"
-                   key={`empty-node-${Math.floor(Math.random() * 100)}`}
-                   style={{height: '100px'}}>
-              </div>
-            );
-          }
-        })}
+      <div className="columnContainer"
+           style={{ float: 'left',
+                    marginRight: '50px'
+      }}>
+        {nodeList}
       </div>
     );
   }
-}
+});
 
 import { connect } from 'react-redux';
 
@@ -62,13 +77,5 @@ function stateToProps(state) {
     nodes: state.nodes,
   };
 }
-
-Column.propTypes = {
-  column: PropTypes.array.isRequired,
-  columnIndex: PropTypes.number.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  editingIndex: PropTypes.string.isRequired,
-  nodes: PropTypes.object.isRequired
-};
 
 export default connect(stateToProps)(Column);
